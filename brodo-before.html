@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brodocar - Company Profile</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ================= GLOBAL ================= */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        transition: 0.3s;
+      }
+
+      /* ================= LIGHT & DARK MODE ================= */
+      body.light {
+        background: #ffffff;
+        color: #000;
+      }
+
+      body.dark {
+        background: #0f172a;
+        color: #fff;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      h1,
+      h2 {
+        margin-bottom: 20px;
+      }
+
+      /* ================= NAVBAR ================= */
+      nav {
+        position: sticky;
+        top: 0;
+        background: linear-gradient(90deg, red, green, yellow);
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      nav .brand {
+        font-weight: bold;
+        font-size: 20px;
+        color: black;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 15px;
+        list-style: none;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+        animation: blink 2s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      /* ================= HERO ================= */
+      .hero {
+        text-align: center;
+      }
+
+      .hero img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ================= CARD IMAGE ================= */
+      .img-shadow {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ================= TESTIMONI SLIDER ================= */
+      .slider {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .slide {
+        min-width: 250px;
+        padding: 20px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        scroll-snap-align: start;
+      }
+
+      /* ================= FLOATING WA ================= */
+      .wa {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: green;
+        color: white;
+        padding: 15px;
+        border-radius: 50%;
+        font-size: 20px;
+        z-index: 999;
+      }
+
+      /* ================= FOOTER ================= */
+      footer {
+        background: #111;
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      /* ================= RESPONSIVE ================= */
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR ================= -->
+    <nav>
+      <div class="brand">BRODOCAR</div>
+      <ul>
+        <li><a href="https://suksespintar.biz.id/home-mobil">Home</a></li>
+        <li><a href="https://suksespintar.biz.id/about-us-mobil">About</a></li>
+        <li><a href="https://suksespintar.biz.id/galleri-mobil">Gallery</a></li>
+        <li><a href="https://suksespintar.biz.id/faq-mobil">FAQ</a></li>
+        <li><a href="https://suksespintar.biz.id/kontak-mobil">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <h1>Selamat Datang di Brodocar</h1>
+      <p>Solusi kendaraan terbaik untuk Anda</p>
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" />
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section>
+      <h2>Tentang Kami</h2>
+      <p>Brodocar adalah perusahaan terpercaya dalam bidang otomotif.</p>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section>
+      <h2>Gallery</h2>
+      <img
+        class="img-shadow"
+        src="https://images.unsplash.com/photo-1493238792000-8113da705763"
+      />
+    </section>
+
+    <!-- ================= TESTIMONI ================= -->
+    <section>
+      <h2>Testimoni</h2>
+      <div class="slider">
+        <div class="slide">Pelayanan sangat bagus!</div>
+        <div class="slide">Mobil berkualitas</div>
+        <div class="slide">Harga terjangkau</div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section>
+      <h2>FAQ</h2>
+      <p><b>Q:</b> Apakah ready?</p>
+      <p><b>A:</b> Ya, selalu ready.</p>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section>
+      <h2>Kontak</h2>
+      <p><i class="fa fa-phone"></i> 08123456789</p>
+    </section>
+
+    <!-- ================= FLOATING WA ================= -->
+    <a href="https://wa.me/628123456789" class="wa"
+      ><i class="fa-brands fa-whatsapp"></i
+    ></a>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      <p>© 2026 Brodocar. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ================= DARK MODE SCRIPT ================= -->
+    <script>
+      const hour = new Date().getHours();
+      if (hour >= 18 || hour < 6) {
+        document.body.classList.add('dark');
+      } else {
+        document.body.classList.add('light');
+      }
+    </script>
+  </body>
+</html>
