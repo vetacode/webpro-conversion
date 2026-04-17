@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Brodocar - Rental mobil impian premium di Indonesia. Sewa mobil mewah kapan saja di mana saja dengan pengiriman cepat."
+    />
+    <title>Brodocar | Drive Your Dream Car</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+
+    <!-- Swiper.js untuk slider testimoni (CDN) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+
+      :root {
+        --primary-red: #ef4444;
+        --primary-green: #22c55e;
+        --primary-yellow: #eab308;
+      }
+
+      * {
+        transition-property:
+          color, background-color, border-color, text-decoration-color, fill,
+          stroke;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+      }
+
+      .tailwind-configured {
+        font-family: 'Inter', system_ui, sans-serif;
+      }
+
+      .logo-font {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      /* Navbar kedap-kedip (glow + scale hover + active pulse) */
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: -2px;
+        left: 0;
+        background: linear-gradient(to right, #ef4444, #22c55e, #eab308);
+        transition: all 0.3s ease;
+      }
+
+      .nav-link:hover:after {
+        width: 100%;
+      }
+
+      .nav-link.active:after {
+        width: 100%;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      /* Hero car shadow + floating effect */
+      .hero-car {
+        filter: drop-shadow(0 35px 35px rgb(0 0 0 / 0.25));
+        animation: floatCar 3s ease-in-out infinite;
+      }
+
+      @keyframes floatCar {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      /* Section header underline */
+      .section-header {
+        position: relative;
+      }
+
+      .section-header:after {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, #ef4444, #22c55e);
+        bottom: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 9999px;
+      }
+
+      /* Dark mode adjustments (tidak tabrakan warna) */
+      .dark .text-black {
+        color: #f1f1f1 !important;
+      }
+      .dark .bg-white {
+        background-color: #111827 !important;
+      }
+      .dark .shadow-xl {
+        box-shadow: 25px 25px 50px -12px rgb(0 0 0 / 0.5) !important;
+      }
+
+      /* Floating WA */
+      .wa-float {
+        animation: waPulse 2s infinite;
+      }
+
+      /* Responsive navbar */
+      @media (max-width: 768px) {
+        .mobile-menu {
+          animation: slideDown 0.3s ease forwards;
+        }
+      }
+    </style>
+  </head>
+  <body class="tailwind-configured antialiased">
+    <!-- ==================== NAVBAR ==================== -->
+    <!-- KOMENTAR: Navbar lengkap seperti gambar (brand kiri, menu tengah, search + button kanan). 
+         Responsive + hamburger di mobile. Warna nuansa merah-hijau-kuning. -->
+    <nav
+      class="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 sticky top-0 z-50 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+          <!-- BRAND -->
+          <div class="flex items-center gap-x-2">
+            <i class="fa-solid fa-car-side text-3xl" style="color: #ef4444"></i>
+            <h1
+              class="logo-font text-3xl font-semibold tracking-[-1px] text-black dark:text-white"
+            >
+              brodocar
+            </h1>
+          </div>
+
+          <!-- MENU DESKTOP -->
+          <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+            <a
+              href="#home"
+              onclick="setActive(this)"
+              class="nav-link text-black dark:text-white hover:text-red-600 active"
+              >Home</a
+            >
+            <a
+              href="#about"
+              onclick="setActive(this)"
+              class="nav-link text-black dark:text-white hover:text-red-600"
+              >About Us</a
+            >
+            <a
+              href="#gallery"
+              onclick="setActive(this)"
+              class="nav-link text-black dark:text-white hover:text-red-600"
+              >Gallery</a
+            >
+            <a
+              href="#faq"
+              onclick="setActive(this)"
+              class="nav-link text-black dark:text-white hover:text-red-600"
+              >FAQ</a
+            >
+            <a
+              href="#contact"
+              onclick="setActive(this)"
+              class="nav-link text-black dark:text-white hover:text-red-600"
+              >Kontak</a
+            >
+
+            <!-- Dropdown Car Brands (mirip gambar asli) -->
+            <div class="group relative">
+              <button
+                onclick="toggleDropdown(this)"
+                class="nav-link flex items-center gap-x-1 text-black dark:text-white hover:text-red-600"
+              >
+                Car Brands
+                <i class="fa-solid fa-chevron-down text-xs"></i>
+              </button>
+              <div
+                id="brand-dropdown"
+                class="hidden group-hover:block absolute top-10 right-0 bg-white dark:bg-gray-900 shadow-2xl rounded-2xl py-4 px-6 w-80 grid grid-cols-4 gap-4 z-50 border border-gray-100 dark:border-gray-700"
+              >
+                <div class="text-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Benz_Logo.svg/2560px-Mercedes-Benz_Logo.svg.png"
+                    alt="Mercedes"
+                    class="h-8 mx-auto grayscale hover:grayscale-0"
+                  />
+                </div>
+                <div class="text-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BMW.svg/2560px-BMW.svg.png"
+                    alt="BMW"
+                    class="h-8 mx-auto grayscale hover:grayscale-0"
+                  />
+                </div>
+                <div class="text-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Porsche_Logo.svg/2560px-Porsche_Logo.svg.png"
+                    alt="Porsche"
+                    class="h-8 mx-auto grayscale hover:grayscale-0"
+                  />
+                </div>
+                <div class="text-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Audi_Logo_2016.svg/2560px-Audi_Logo_2016.svg.png"
+                    alt="Audi"
+                    class="h-8 mx-auto grayscale hover:grayscale-0"
+                  />
+                </div>
+                <div class="text-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Lamborghini_Logo.svg/2560px-Lamborghini_Logo.svg.png"
+                    alt="Lamborghini"
+                    class="h-8 mx-auto grayscale hover:grayscale-0"
+                  />
+                </div>
+                <div class="text-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Ferrari_Logo.svg/2560px-Ferrari_Logo.svg.png"
+                    alt="Ferrari"
+                    class="h-8 mx-auto grayscale hover:grayscale-0"
+                  />
+                </div>
+                <div class="text-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Lexus_Logo.svg/2560px-Lexus_Logo.svg.png"
+                    alt="Lexus"
+                    class="h-8 mx-auto grayscale hover:grayscale-0"
+                  />
+                </div>
+                <div class="text-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Toyota_Logo.svg/2560px-Toyota_Logo.svg.png"
+                    alt="Toyota"
+                    class="h-8 mx-auto grayscale hover:grayscale-0"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT SIDE -->
+          <div class="flex items-center gap-x-4">
+            <!-- Search -->
+            <button
+              onclick="
+                alert('Fitur pencarian armada akan aktif setelah deploy!')
+              "
+              class="w-10 h-10 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-red-600 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              <i class="fa-solid fa-magnifying-glass text-xl"></i>
+            </button>
+
+            <!-- Contact Us Button (mirip gambar) -->
+            <a
+              href="#contact"
+              class="hidden sm:flex items-center px-6 h-10 bg-black dark:bg-white dark:text-black text-white text-sm font-semibold rounded-3xl hover:bg-red-600 hover:text-white"
+            >
+              Hubungi Kami
+            </a>
+
+            <!-- Hamburger Mobile -->
+            <button
+              onclick="toggleMobileMenu()"
+              id="hamburger-btn"
+              class="md:hidden w-10 h-10 flex items-center justify-center text-2xl text-black dark:text-white"
+            >
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden bg-white dark:bg-gray-900 border-t py-6 mobile-menu"
+        >
+          <div class="flex flex-col gap-y-6 px-6 text-lg font-medium">
+            <a
+              href="#home"
+              onclick="
+                toggleMobileMenu();
+                setActive(this);
+              "
+              class="nav-link"
+              >Home</a
+            >
+            <a
+              href="#about"
+              onclick="
+                toggleMobileMenu();
+                setActive(this);
+              "
+              class="nav-link"
+              >About Us</a
+            >
+            <a
+              href="#gallery"
+              onclick="
+                toggleMobileMenu();
+                setActive(this);
+              "
+              class="nav-link"
+              >Gallery</a
+            >
+            <a
+              href="#faq"
+              onclick="
+                toggleMobileMenu();
+                setActive(this);
+              "
+              class="nav-link"
+              >FAQ</a
+            >
+            <a
+              href="#contact"
+              onclick="
+                toggleMobileMenu();
+                setActive(this);
+              "
+              class="nav-link"
+              >Kontak</a
+            >
+            <div class="pt-4 border-t flex justify-center">
+              <a
+                href="#contact"
+                class="px-8 py-4 bg-red-600 text-white rounded-3xl font-semibold flex items-center gap-x-2"
+              >
+                <i class="fa-solid fa-phone"></i> Hubungi Sekarang
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION (sama persis konsep gambar) ==================== -->
+    <!-- KOMENTAR: Hero persis seperti gambar terlampir. Ganti gambar mobil pakai Unsplash. Shadow + floating animation. -->
+    <section id="home" class="bg-white dark:bg-gray-900 pt-12 pb-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Text -->
+          <div class="space-y-8">
+            <h1
+              class="text-5xl lg:text-6xl font-semibold leading-none tracking-[-2px] text-black dark:text-white"
+            >
+              Kendarai Mobil<br />Impian Anda<br /><span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-green-500 to-yellow-500"
+                >Kapan Saja Di Mana Saja</span
+              >
+            </h1>
+
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-md">
+              Brodocar menyediakan mobil mewah terkurasi, pemesanan cepat, dan
+              pengiriman seamless untuk pengalaman berkendara yang tak
+              terlupakan.
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#gallery"
+                class="px-8 py-4 bg-black text-white dark:bg-white dark:text-black rounded-3xl font-semibold flex items-center gap-x-3 hover:scale-105"
+              >
+                <i class="fa-solid fa-car"></i>
+                Pesan Ride Anda
+              </a>
+              <a
+                href="#gallery"
+                class="px-8 py-4 border-2 border-black dark:border-white rounded-3xl font-semibold flex items-center gap-x-3 hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                Jelajahi Armada
+              </a>
+            </div>
+
+            <!-- Trust badges -->
+            <div class="flex items-center gap-x-8 text-sm">
+              <div class="flex items-center">
+                <i
+                  class="fa-solid fa-shield-halved text-green-500 text-2xl mr-2"
+                ></i>
+                <div>
+                  <div class="font-semibold">Asuransi Full</div>
+                  <div class="text-gray-500 text-xs">100% Aman</div>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <i class="fa-solid fa-clock text-yellow-500 text-2xl mr-2"></i>
+                <div>
+                  <div class="font-semibold">Pengiriman 24 Jam</div>
+                  <div class="text-gray-500 text-xs">
+                    Jakarta &amp; sekitarnya
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Car Image -->
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1583121274602-3e2820c69888"
+              alt="Porsche GT3 RS - Brodocar Hero"
+              class="hero-car w-full max-w-[620px] mx-auto lg:mx-0"
+            />
+            <!-- Small badge on car -->
+            <div
+              class="absolute bottom-12 right-12 bg-white dark:bg-gray-900 shadow-xl rounded-2xl px-5 py-3 flex items-center gap-x-2 text-sm font-semibold"
+            >
+              <span class="text-green-500">•</span>
+              Ready to Drive
+            </div>
+          </div>
+        </div>
+
+        <!-- BRAND LOGOS (sama seperti gambar) -->
+        <!-- KOMENTAR: Logo brand mobil dari Unsplash / public domain. Bisa diganti. -->
+        <div
+          class="mt-16 flex flex-wrap justify-center items-center gap-x-10 gap-y-6 opacity-75 grayscale hover:grayscale-0"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Benz_Logo.svg/2560px-Mercedes-Benz_Logo.svg.png"
+            alt="Mercedes"
+            class="h-7"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BMW.svg/2560px-BMW.svg.png"
+            alt="BMW"
+            class="h-7"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Porsche_Logo.svg/2560px-Porsche_Logo.svg.png"
+            alt="Porsche"
+            class="h-7"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Audi_Logo_2016.svg/2560px-Audi_Logo_2016.svg.png"
+            alt="Audi"
+            class="h-7"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Lamborghini_Logo.svg/2560px-Lamborghini_Logo.svg.png"
+            alt="Lamborghini"
+            class="h-8"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Ferrari_Logo.svg/2560px-Ferrari_Logo.svg.png"
+            alt="Ferrari"
+            class="h-7"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Lexus_Logo.svg/2560px-Lexus_Logo.svg.png"
+            alt="Lexus"
+            class="h-7"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT US SECTION ==================== -->
+    <!-- KOMENTAR: Section About Us. Bisa di-edit teks & gambar Unsplash. -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-950">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-12 gap-12 items-center">
+          <div class="md:col-span-7">
+            <span
+              class="px-4 py-1 text-xs font-semibold bg-gradient-to-r from-red-100 to-yellow-100 dark:from-red-900 dark:to-yellow-900 text-red-700 dark:text-yellow-300 rounded-3xl"
+              >Tentang Brodocar</span
+            >
+            <h2
+              class="section-header text-4xl font-semibold mt-4 mb-6 text-black dark:text-white"
+            >
+              Kami Membuat Impian Berkendara Menjadi Nyata
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+              Didirikan di Jakarta tahun 2023, Brodocar adalah platform rental
+              mobil premium yang menghubungkan Anda dengan mobil impian. Dari
+              Porsche, Lamborghini, hingga Mercedes-Benz – semuanya siap
+              dikendarai kapan pun dan di mana pun Anda berada.
+            </p>
+            <div class="grid grid-cols-3 gap-6 mt-12">
+              <div>
+                <h4 class="text-4xl font-semibold text-red-600">500+</h4>
+                <p class="text-sm text-gray-500">Mobil premium</p>
+              </div>
+              <div>
+                <h4 class="text-4xl font-semibold text-green-600">98%</h4>
+                <p class="text-sm text-gray-500">Tingkat kepuasan</p>
+              </div>
+              <div>
+                <h4 class="text-4xl font-semibold text-yellow-600">24/7</h4>
+                <p class="text-sm text-gray-500">Pengiriman</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-5">
+            <img
+              src="https://images.unsplash.com/photo-1518780664697-55e3d2a3e2a3"
+              alt="Tim Brodocar"
+              class="rounded-3xl shadow-2xl w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== GALLERY / OUR FLEET SECTION ==================== -->
+    <!-- KOMENTAR: Gallery mobil dengan shadow. Bisa tambah / hapus card. Semua gambar dari Unsplash. -->
+    <section id="gallery" class="py-20 bg-white dark:bg-gray-900">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-end mb-10">
+          <div>
+            <span
+              class="text-xs uppercase tracking-widest font-semibold text-green-600"
+              >Our Fleet</span
+            >
+            <h2
+              class="section-header text-4xl font-semibold text-black dark:text-white"
+            >
+              Mobil Impian Anda
+            </h2>
+          </div>
+          <a
+            href="#"
+            onclick="alert('Lihat semua armada di dashboard setelah login')"
+            class="flex items-center text-sm font-medium text-red-600 hover:text-red-700"
+          >
+            Lihat Semua <i class="fa-solid fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <div
+            class="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl hover:-translate-y-2"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1583121274602-3e2820c69888"
+              alt="Porsche GT3 RS"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex justify-between items-baseline">
+                <h4 class="font-semibold text-xl">Porsche 911 GT3 RS</h4>
+                <span class="text-green-600 font-medium">Rp 4,5jt/hari</span>
+              </div>
+              <p class="text-gray-500 text-sm mt-1">Jakarta • Manual • 2024</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl hover:-translate-y-2"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d"
+              alt="Lamborghini Huracan"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex justify-between items-baseline">
+                <h4 class="font-semibold text-xl">Lamborghini Huracán EVO</h4>
+                <span class="text-green-600 font-medium">Rp 6jt/hari</span>
+              </div>
+              <p class="text-gray-500 text-sm mt-1">
+                Jakarta • Automatic • 2025
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl hover:-translate-y-2"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1618843479313-40f8a0f0a5f8"
+              alt="Mercedes AMG GT"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex justify-between items-baseline">
+                <h4 class="font-semibold text-xl">Mercedes-AMG GT R</h4>
+                <span class="text-green-600 font-medium">Rp 3,8jt/hari</span>
+              </div>
+              <p class="text-gray-500 text-sm mt-1">
+                Jakarta • Automatic • 2024
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIAL SECTION ==================== -->
+    <!-- KOMENTAR: Slider testimoni yang bisa digeser (Swiper.js). Foto dari Unsplash. -->
+    <section
+      class="py-20 bg-gradient-to-br from-red-50 to-yellow-50 dark:from-gray-900 dark:to-gray-800"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <h2
+          class="section-header text-4xl font-semibold text-center text-black dark:text-white mb-12"
+        >
+          Apa Kata Pelanggan Kami
+        </h2>
+
+        <div class="swiper testimonial-swiper max-w-4xl mx-auto">
+          <div class="swiper-wrapper">
+            <!-- Testimoni 1 -->
+            <div
+              class="swiper-slide bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-2xl"
+            >
+              <div class="flex gap-x-4">
+                <img
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"
+                  alt="Andi"
+                  class="w-14 h-14 rounded-2xl object-cover"
+                />
+                <div>
+                  <h5 class="font-semibold">Andi Pramono</h5>
+                  <p class="text-xs text-gray-500">CEO Startup • Jakarta</p>
+                </div>
+              </div>
+              <p class="mt-6 text-lg italic">
+                "Brodocar bikin perjalanan bisnis saya jauh lebih mewah. Mobil
+                datang tepat waktu, bersih, dan sopirnya ramah. Rekomendasi
+                banget!"
+              </p>
+              <div class="flex text-yellow-400 mt-6">★★★★☆</div>
+            </div>
+
+            <!-- Testimoni 2 -->
+            <div
+              class="swiper-slide bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-2xl"
+            >
+              <div class="flex gap-x-4">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+                  alt="Sinta"
+                  class="w-14 h-14 rounded-2xl object-cover"
+                />
+                <div>
+                  <h5 class="font-semibold">Sinta Dewi</h5>
+                  <p class="text-xs text-gray-500">Content Creator • Bandung</p>
+                </div>
+              </div>
+              <p class="mt-6 text-lg italic">
+                "Sewa Lamborghini buat konten YouTube. Prosesnya gampang banget
+                via aplikasi. Pengiriman ke studio super cepat!"
+              </p>
+              <div class="flex text-yellow-400 mt-6">★★★★★</div>
+            </div>
+
+            <!-- Testimoni 3 -->
+            <div
+              class="swiper-slide bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-2xl"
+            >
+              <div class="flex gap-x-4">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                  alt="Budi"
+                  class="w-14 h-14 rounded-2xl object-cover"
+                />
+                <div>
+                  <h5 class="font-semibold">Budi Santoso</h5>
+                  <p class="text-xs text-gray-500">Pengusaha • Surabaya</p>
+                </div>
+              </div>
+              <p class="mt-6 text-lg italic">
+                "Pernah sewa Porsche untuk acara keluarga. Layanan 24 jam dan
+                harga transparan. Pasti balik lagi!"
+              </p>
+              <div class="flex text-yellow-400 mt-6">★★★★☆</div>
+            </div>
+          </div>
+
+          <!-- Navigation Swiper -->
+          <div class="swiper-pagination mt-8"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ SECTION ==================== -->
+    <!-- KOMENTAR: FAQ accordion. Bisa tambah pertanyaan. -->
+    <section id="faq" class="py-20 bg-white dark:bg-gray-900">
+      <div class="max-w-4xl mx-auto px-6">
+        <h2
+          class="section-header text-4xl font-semibold text-center text-black dark:text-white mb-12"
+        >
+          Pertanyaan yang Sering Diajukan
+        </h2>
+
+        <div class="space-y-4">
+          <details
+            class="group bg-gray-50 dark:bg-gray-800 rounded-3xl px-6 py-5 cursor-pointer"
+          >
+            <summary
+              class="flex justify-between items-center text-lg font-medium"
+            >
+              Berapa lama proses booking?
+              <i class="fa-solid fa-chevron-down group-open:rotate-180"></i>
+            </summary>
+            <p class="text-gray-600 dark:text-gray-400 mt-4">
+              Hanya 2 menit. Pilih mobil → isi data → konfirmasi pembayaran →
+              mobil siap dikirim.
+            </p>
+          </details>
+
+          <details
+            class="group bg-gray-50 dark:bg-gray-800 rounded-3xl px-6 py-5 cursor-pointer"
+          >
+            <summary
+              class="flex justify-between items-center text-lg font-medium"
+            >
+              Apakah ada biaya pengiriman?
+              <i class="fa-solid fa-chevron-down group-open:rotate-180"></i>
+            </summary>
+            <p class="text-gray-600 dark:text-gray-400 mt-4">
+              Gratis untuk area Jakarta, Bekasi, Tangerang, dan Depok (radius 50
+              km). Di luar itu dikenakan biaya flat Rp 500.000.
+            </p>
+          </details>
+
+          <details
+            class="group bg-gray-50 dark:bg-gray-800 rounded-3xl px-6 py-5 cursor-pointer"
+          >
+            <summary
+              class="flex justify-between items-center text-lg font-medium"
+            >
+              Bisakah saya sewa untuk luar kota?
+              <i class="fa-solid fa-chevron-down group-open:rotate-180"></i>
+            </summary>
+            <p class="text-gray-600 dark:text-gray-400 mt-4">
+              Ya! Kami melayani rental ke seluruh Indonesia dengan opsi supir
+              atau self-drive.
+            </p>
+          </details>
+
+          <details
+            class="group bg-gray-50 dark:bg-gray-800 rounded-3xl px-6 py-5 cursor-pointer"
+          >
+            <summary
+              class="flex justify-between items-center text-lg font-medium"
+            >
+              Apa saja syarat sewa mobil?
+              <i class="fa-solid fa-chevron-down group-open:rotate-180"></i>
+            </summary>
+            <p class="text-gray-600 dark:text-gray-400 mt-4">
+              KTP, SIM A yang masih berlaku, dan deposit (bisa di-refund setelah
+              pengembalian).
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <!-- KOMENTAR: Form kontak + info. Bisa dihubungkan ke backend nanti. -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-950">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16">
+          <div>
+            <h2
+              class="section-header text-4xl font-semibold text-black dark:text-white"
+            >
+              Hubungi Brodocar
+            </h2>
+            <p class="mt-4 text-gray-600 dark:text-gray-400">
+              Kami siap melayani 24/7. Kirim pesan atau chat WhatsApp sekarang!
+            </p>
+
+            <div class="mt-10 space-y-8">
+              <div class="flex gap-x-4">
+                <i class="fa-solid fa-phone text-3xl text-green-600"></i>
+                <div>
+                  <p class="font-medium">+62 812-3456-7890</p>
+                  <p class="text-sm text-gray-500">Senin–Minggu, 24 Jam</p>
+                </div>
+              </div>
+              <div class="flex gap-x-4">
+                <i class="fa-solid fa-envelope text-3xl text-yellow-600"></i>
+                <div>
+                  <p class="font-medium">hello@brodocar.id</p>
+                </div>
+              </div>
+              <div class="flex gap-x-4">
+                <i class="fa-solid fa-location-dot text-3xl text-red-600"></i>
+                <div>
+                  <p class="font-medium">
+                    Jl. Sudirman No. 88, Jakarta Selatan
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form
+            onsubmit="handleSubmit(event)"
+            class="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-8 space-y-6"
+          >
+            <input
+              type="text"
+              placeholder="Nama Lengkap"
+              class="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:border-red-600"
+              required
+            />
+            <input
+              type="tel"
+              placeholder="Nomor HP"
+              class="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:border-red-600"
+              required
+            />
+            <textarea
+              placeholder="Pesan Anda (contoh: mau sewa Porsche untuk besok)"
+              rows="5"
+              class="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:border-red-600"
+              required
+            ></textarea>
+            <button
+              type="submit"
+              class="w-full py-5 bg-gradient-to-r from-red-600 to-green-600 text-white font-semibold rounded-3xl flex items-center justify-center gap-x-2 text-lg"
+            >
+              <i class="fa-solid fa-paper-plane"></i>
+              Kirim Pesan
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER LENGKAP ==================== -->
+    <!-- KOMENTAR: Footer lengkap dengan link, social, copyright. -->
+    <footer class="bg-black text-white py-16">
+      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-y-10">
+        <!-- Column 1 -->
+        <div>
+          <div class="flex items-center gap-x-2 mb-6">
+            <i class="fa-solid fa-car-side text-4xl text-red-500"></i>
+            <h1 class="logo-font text-3xl">brodocar</h1>
+          </div>
+          <p class="text-gray-400 text-sm">
+            Rental mobil mewah premium<br />di Indonesia sejak 2023.
+          </p>
+          <div class="flex gap-x-5 mt-8">
+            <a href="#" class="text-2xl hover:text-green-400"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="#" class="text-2xl hover:text-green-400"
+              ><i class="fa-brands fa-tiktok"></i
+            ></a>
+            <a href="#" class="text-2xl hover:text-green-400"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div>
+          <h4 class="font-semibold mb-6">Perusahaan</h4>
+          <ul class="space-y-3 text-sm text-gray-400">
+            <li><a href="#about" class="hover:text-white">Tentang Kami</a></li>
+            <li><a href="#" class="hover:text-white">Karir</a></li>
+            <li><a href="#" class="hover:text-white">Blog</a></li>
+            <li><a href="#gallery" class="hover:text-white">Armada Kami</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div>
+          <h4 class="font-semibold mb-6">Layanan</h4>
+          <ul class="space-y-3 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white">Rental Harian</a></li>
+            <li><a href="#" class="hover:text-white">Rental Bulanan</a></li>
+            <li><a href="#" class="hover:text-white">Lease To Own</a></li>
+            <li><a href="#" class="hover:text-white">Wedding Car</a></li>
+            <li><a href="#" class="hover:text-white">Airport Transfer</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div>
+          <h4 class="font-semibold mb-6">Hubungi Kami</h4>
+          <a
+            href="https://wa.me/6281234567890"
+            target="_blank"
+            class="flex items-center bg-green-600 hover:bg-green-500 px-6 py-4 rounded-3xl w-fit text-white font-medium"
+          >
+            <i class="fa-brands fa-whatsapp text-3xl mr-3"></i>
+            Chat WhatsApp
+          </a>
+          <p class="text-xs text-gray-400 mt-8">
+            © 2026 Brodocar. All Rights Reserved.<br />Made with ❤️ in Jakarta
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <!-- KOMENTAR: Floating WA di semua halaman. GANTI NOMOR WA di href. -->
+    <a
+      href="https://wa.me/6281234567890?text=Halo%20Brodocar%2C%20saya%20mau%20sewa%20mobil%20impian"
+      target="_blank"
+      class="wa-float fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-4xl z-[9999] hover:scale-110"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+      /**
+       * MAIN SCRIPT
+       * Semua fungsi JS ada di sini. Mudah di-edit.
+       */
+
+      // Tailwind configuration + dark mode otomatis
+      function initializeTailwind() {
+        return {
+          config(userConfig = {}) {
+            return {
+              content: [],
+              darkMode: 'media', // otomatis mengikuti prefers-color-scheme
+              theme: {
+                extend: {},
+              },
+              plugins: [],
+              ...userConfig,
+            };
+          },
+          theme: {
+            extend: {},
+          },
+        };
+      }
+
+      // Apply Tailwind
+      document.addEventListener('DOMContentLoaded', () => {
+        const config = initializeTailwind().config();
+        window.tailwindConfig = () => config;
+        // Trigger Tailwind to re-scan
+        return window.dispatchEvent(new Event('resize'));
+      });
+
+      // Navbar active link
+      function setActive(el) {
+        document
+          .querySelectorAll('.nav-link')
+          .forEach((link) => link.classList.remove('active'));
+        el.classList.add('active');
+      }
+
+      // Mobile menu toggle
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document
+          .getElementById('hamburger-btn')
+          .querySelector('i');
+
+        if (menu.classList.contains('hidden')) {
+          menu.style.display = 'block';
+          icon.classList.replace('fa-bars', 'fa-xmark');
+        } else {
+          menu.style.display = 'none';
+          icon.classList.replace('fa-xmark', 'fa-bars');
+        }
+      }
+
+      // Brand dropdown
+      function toggleDropdown(btn) {
+        const dropdown = document.getElementById('brand-dropdown');
+        dropdown.classList.toggle('hidden');
+      }
+
+      // Swiper Testimonial
+      function initTestimonialSlider() {
+        return new Swiper('.testimonial-swiper', {
+          loop: true,
+          autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          slidesPerView: 1,
+          spaceBetween: 20,
+          breakpoints: {
+            768: { slidesPerView: 1 },
+          },
+        });
+      }
+
+      // Form submit handler (demo)
+      function handleSubmit(e) {
+        e.preventDefault();
+        alert(
+          '✅ Pesan berhasil dikirim ke tim Brodocar!\n\nKami akan balas secepatnya via WhatsApp.',
+        );
+        e.target.reset();
+      }
+
+      // Initialize everything
+      window.onload = function () {
+        initTestimonialSlider();
+
+        console.log(
+          '%c✅ Website Brodocar siap! Desain mirip gambar terlampir, responsive, dark mode otomatis, floating WA, slider testimoni, dan semua section sudah ada komentar untuk edit mudah.',
+          'color:#22c55e; font-size:13px;',
+        );
+
+        // Console info untuk developer
+        console.log(
+          '%cGANTI NOMOR WA di floating button & footer (baris ~480)',
+          'color:#eab308',
+        );
+        console.log(
+          '%cGanti gambar Unsplash sesuai kebutuhan di tiap section',
+          'color:#ef4444',
+        );
+      };
+    </script>
+  </body>
+</html>
