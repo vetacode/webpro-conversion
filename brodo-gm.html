@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brodocar | Luxury Car Rental</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      :root {
+        --brand-red: #e02424;
+        --brand-green: #057a55;
+        --brand-yellow: #eab308;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+      }
+
+      /* Shadow untuk Gambar */
+      .img-shadow {
+        filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+      }
+
+      /* Animasi Kedap-Kedip Navigasi */
+      @keyframes pulse-nav {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+      .nav-blink {
+        animation: pulse-nav 2s infinite;
+      }
+
+      /* Floating WA */
+      .wa-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: white;
+        padding: 15px;
+        border-radius: 50px;
+        z-index: 100;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Dark/Light Mode Auto */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #111827;
+          color: white;
+        }
+        .text-custom {
+          color: #ffffff !important;
+        }
+        .bg-card {
+          background-color: #1f2937;
+        }
+      }
+      @media (prefers-color-scheme: light) {
+        body {
+          background-color: #ffffff;
+          color: #111827;
+        }
+        .text-custom {
+          color: #000000 !important;
+        }
+        .bg-card {
+          background-color: #f3f4f6;
+        }
+      }
+
+      /* Testimonial Slider Simpel */
+      .slider-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+      }
+      .slider-item {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+      }
+    </style>
+  </head>
+  <body class="text-custom">
+    <nav
+      class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+          <div class="flex items-center gap-8">
+            <h1 class="text-2xl font-bold border-l-4 border-yellow-400 pl-2">
+              BRODO<span class="text-red-600">CAR</span>
+            </h1>
+
+            <div
+              class="hidden md:flex space-x-6 font-semibold nav-blink text-sm uppercase tracking-wider"
+            >
+              <a
+                href="https://suksespintar.biz.id/home-mobil"
+                class="hover:text-red-600 transition"
+                >Home</a
+              >
+              <a
+                href="https://suksespintar.biz.id/about-us-mobil"
+                class="hover:text-green-600 transition"
+                >About Us</a
+              >
+              <a
+                href="https://suksespintar.biz.id/galleri-mobil"
+                class="hover:text-yellow-600 transition"
+                >Gallery</a
+              >
+              <a
+                href="https://suksespintar.biz.id/faq-mobil"
+                class="hover:text-red-600 transition"
+                >FAQ</a
+              >
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <a
+              href="https://suksespintar.biz.id/kontak-mobil"
+              class="bg-black text-white px-6 py-2 rounded-full hover:bg-red-700 transition"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="py-16 px-4 text-center">
+      <h2 class="text-5xl md:text-7xl font-bold mb-6">
+        Drive Your Dream Car <br />
+        Anywhere
+      </h2>
+      <p class="max-w-2xl mx-auto mb-10 text-gray-500">
+        Brodocar menawarkan pilihan mobil mewah terkurasi, pemesanan cepat, dan
+        pengiriman mulus untuk perjalanan tak terlupakan.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <button class="bg-black text-white px-8 py-3 rounded-full font-bold">
+          Book Your Ride
+        </button>
+        <button
+          class="border-2 border-gray-200 px-8 py-3 rounded-full font-bold"
+        >
+          Browse Our Fleet
+        </button>
+      </div>
+
+      <div class="mt-12">
+        <img
+          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200"
+          alt="Porsche GT3RS"
+          class="mx-auto w-full max-w-4xl img-shadow rounded-2xl"
+        />
+      </div>
+    </header>
+
+    <section
+      class="py-10 grayscale opacity-50 flex flex-wrap justify-center gap-12 text-2xl font-bold"
+    >
+      <span>AMG</span><span>BMW</span><span>CADILLAC</span
+      ><span class="text-green-600">GMC</span><span>NISSAN</span>
+    </section>
+
+    <section class="py-20 bg-card">
+      <div
+        class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=600"
+          class="rounded-xl img-shadow"
+          alt="Car interior"
+        />
+        <div>
+          <span class="text-red-600 font-bold uppercase tracking-widest"
+            >Tentang Kami</span
+          >
+          <h3 class="text-4xl font-bold mt-4 mb-6">
+            Solusi Sewa Mobil Mewah Terpercaya
+          </h3>
+          <p class="mb-6">
+            Kami di Brodocar memastikan setiap unit dalam kondisi prima. Dengan
+            navigasi warna Merah, Hijau, dan Kuning yang melambangkan kecepatan,
+            keamanan, dan pelayanan prima.
+          </p>
+          <ul class="space-y-3">
+            <li>
+              <i class="fas fa-check text-green-600 mr-2"></i> Asuransi All-Risk
+            </li>
+            <li>
+              <i class="fas fa-check text-yellow-500 mr-2"></i> Layanan Antar
+              Jemput
+            </li>
+            <li>
+              <i class="fas fa-check text-red-600 mr-2"></i> Dukungan 24/7
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 overflow-hidden">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h3 class="text-3xl font-bold mb-12">Apa Kata Mereka?</h3>
+        <div class="slider-container" id="testimonialSlider">
+          <div
+            class="slider-item p-10 bg-yellow-50 dark:bg-gray-800 rounded-3xl"
+          >
+            <p class="text-xl italic mb-6">
+              "Pelayanan Brodocar sangat luar biasa. Mobil bersih dan wangi!"
+            </p>
+            <div class="font-bold">- Budi Santoso, Jakarta</div>
+          </div>
+          <div
+            class="slider-item p-10 bg-green-50 dark:bg-gray-800 rounded-3xl"
+          >
+            <p class="text-xl italic mb-6">
+              "Proses booking sangat cepat, kurang dari 5 menit sudah beres."
+            </p>
+            <div class="font-bold">- Siti Aminah, Bandung</div>
+          </div>
+          <div class="slider-item p-10 bg-red-50 dark:bg-gray-800 rounded-3xl">
+            <p class="text-xl italic mb-6">
+              "Pilihan mobilnya benar-benar impian semua. Mantap!"
+            </p>
+            <div class="font-bold">- Andi Wijaya, Surabaya</div>
+          </div>
+        </div>
+        <div class="mt-6 space-x-2">
+          <button
+            onclick="moveSlider(-1)"
+            class="p-2 border rounded-full hover:bg-gray-200 transition"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button
+            onclick="moveSlider(1)"
+            class="p-2 border rounded-full hover:bg-gray-200 transition"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-950 text-white pt-20 pb-10">
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-800 pb-12"
+      >
+        <div>
+          <h4 class="text-2xl font-bold mb-6">
+            BRODO<span class="text-red-600">CAR</span>
+          </h4>
+          <p class="text-gray-400">
+            Jasa penyewaan mobil mewah nomor 1 di Indonesia dengan armada
+            terlengkap.
+          </p>
+        </div>
+        <div>
+          <h5 class="font-bold mb-6 text-yellow-500">Quick Links</h5>
+          <ul class="space-y-4 text-gray-400">
+            <li>
+              <a
+                href="https://suksespintar.biz.id/home-mobil"
+                class="hover:text-white"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://suksespintar.biz.id/about-us-mobil"
+                class="hover:text-white"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://suksespintar.biz.id/faq-mobil"
+                class="hover:text-white"
+                >FAQ</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-bold mb-6 text-green-500">Support</h5>
+          <ul class="space-y-4 text-gray-400">
+            <li>Pusat Bantuan</li>
+            <li>Ketentuan Layanan</li>
+            <li>Kebijakan Privasi</li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-bold mb-6 text-red-500">Kontak Kami</h5>
+          <p class="text-gray-400 mb-4 italic">
+            Jl. Raya Mewah No. 123, Jakarta Selatan
+          </p>
+          <div class="flex space-x-4 text-xl">
+            <i class="fab fa-facebook hover:text-blue-500"></i>
+            <i class="fab fa-instagram hover:text-pink-500"></i>
+            <i class="fab fa-youtube hover:text-red-500"></i>
+          </div>
+        </div>
+      </div>
+      <p class="text-center mt-10 text-gray-500 text-sm">
+        © 2026 Brodocar - All Rights Reserved.
+      </p>
+    </footer>
+
+    <a href="https://wa.me/628123456789" class="wa-float text-3xl">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+      // Logika Slider Testimoni
+      const slider = document.getElementById('testimonialSlider');
+      let scrollAmount = 0;
+
+      function moveSlider(direction) {
+        const width = slider.offsetWidth;
+        if (direction === 1) {
+          scrollAmount += width;
+          if (scrollAmount >= slider.scrollWidth) scrollAmount = 0;
+        } else {
+          scrollAmount -= width;
+          if (scrollAmount < 0) scrollAmount = slider.scrollWidth - width;
+        }
+        slider.scrollTo({
+          left: scrollAmount,
+          behavior: 'smooth',
+        });
+      }
+
+      // Auto slide setiap 5 detik
+      setInterval(() => moveSlider(1), 5000);
+
+      // Deteksi Mode Gelap (Otomatis ditangani oleh CSS Media Queries,
+      // namun script ini bisa digunakan untuk toggle manual kedepannya)
+      const isDarkMode = window.matchMedia(
+        '(prefers-color-scheme: dark)',
+      ).matches;
+      console.log('Mode gelap aktif:', isDarkMode);
+    </script>
+  </body>
+</html>
