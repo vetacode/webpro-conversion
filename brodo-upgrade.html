@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brodocar - Premium Company Profile</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ================= GLOBAL ================= */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        transition: 0.3s;
+        line-height: 1.6;
+      }
+
+      body.light {
+        background: #fff;
+        color: #000;
+      }
+      body.dark {
+        background: #0f172a;
+        color: #fff;
+      }
+
+      section {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+      h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      /* ================= NAVBAR ================= */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background: linear-gradient(90deg, red, green, yellow);
+      }
+
+      .brand {
+        font-weight: 700;
+        font-size: 22px;
+        color: #000;
+      }
+
+      .menu {
+        display: flex;
+        gap: 20px;
+      }
+
+      .menu a {
+        text-decoration: none;
+        color: #000;
+        font-weight: 500;
+        position: relative;
+      }
+
+      .menu a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: black;
+        transition: 0.3s;
+      }
+
+      .menu a:hover::after {
+        width: 100%;
+      }
+
+      /* ================= HERO (AIDA - Attention) ================= */
+      .hero {
+        text-align: center;
+      }
+
+      .hero img {
+        width: 100%;
+        border-radius: 20px;
+        margin-top: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .cta {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 25px;
+        border-radius: 30px;
+        background: red;
+        color: #fff;
+        text-decoration: none;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ================= FEATURES (Interest) ================= */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        padding: 20px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      /* ================= GALLERY ================= */
+      .gallery img {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ================= TESTIMONI (Desire) ================= */
+      .slider {
+        display: flex;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .slides {
+        display: flex;
+        transition: 0.5s;
+      }
+
+      .slide {
+        min-width: 100%;
+        padding: 20px;
+      }
+
+      /* ================= FAQ ================= */
+      .faq-item {
+        margin-bottom: 15px;
+      }
+      .faq-item h4 {
+        cursor: pointer;
+      }
+      .faq-item p {
+        display: none;
+        margin-top: 5px;
+      }
+
+      /* ================= CTA (Action) ================= */
+      .cta-section {
+        text-align: center;
+      }
+
+      /* ================= FLOATING WA ================= */
+      .wa {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #25d366;
+        color: #fff;
+        padding: 15px;
+        border-radius: 50%;
+        font-size: 22px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+      }
+
+      /* ================= FOOTER ================= */
+      footer {
+        background: #111;
+        color: #fff;
+        padding: 40px 20px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      /* ================= RESPONSIVE ================= */
+      @media (max-width: 768px) {
+        .menu {
+          display: none;
+          flex-direction: column;
+        }
+        .menu.active {
+          display: flex;
+        }
+        .toggle {
+          display: block;
+          cursor: pointer;
+        }
+      }
+
+      .toggle {
+        display: none;
+        font-size: 22px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR ================= -->
+    <nav>
+      <div class="brand">BRODOCAR</div>
+      <div class="toggle" onclick="toggleMenu()">
+        <i class="fa fa-bars"></i>
+      </div>
+      <div class="menu" id="menu">
+        <a href="https://suksespintar.biz.id/home-mobil">Home</a>
+        <a href="https://suksespintar.biz.id/about-us-mobil">About</a>
+        <a href="https://suksespintar.biz.id/galleri-mobil">Gallery</a>
+        <a href="https://suksespintar.biz.id/faq-mobil">FAQ</a>
+        <a href="https://suksespintar.biz.id/kontak-mobil">Kontak</a>
+      </div>
+    </nav>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <h1>Mobil Impian Anda, Kami Sediakan</h1>
+      <p>Dealer terpercaya dengan kualitas terbaik</p>
+      <a href="#" class="cta">Lihat Mobil</a>
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" />
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section>
+      <h2>Kenapa Pilih Kami?</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fa fa-car"></i>
+          <h3>Unit Lengkap</h3>
+        </div>
+        <div class="card">
+          <i class="fa fa-dollar"></i>
+          <h3>Harga Terbaik</h3>
+        </div>
+        <div class="card">
+          <i class="fa fa-star"></i>
+          <h3>Terpercaya</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section>
+      <h2>Gallery Mobil</h2>
+      <div class="grid gallery">
+        <img
+          src="https://images.unsplash.com/photo-1493238792000-8113da705763"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1502877338535-766e1452684a"
+        />
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONI ================= -->
+    <section>
+      <h2>Apa Kata Mereka</h2>
+      <div class="slider">
+        <div class="slides" id="slides">
+          <div class="slide">Pelayanan luar biasa</div>
+          <div class="slide">Mobil bagus & bersih</div>
+          <div class="slide">Rekomendasi banget</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section>
+      <h2>FAQ</h2>
+      <div class="faq-item">
+        <h4 onclick="toggleFAQ(this)">Apakah ready unit?</h4>
+        <p>Selalu ready.</p>
+      </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="cta-section">
+      <h2>Siap Punya Mobil?</h2>
+      <a href="#" class="cta">Hubungi Sekarang</a>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <h3>Brodocar</h3>
+          <p>Dealer mobil terpercaya</p>
+        </div>
+        <div>
+          <h4>Menu</h4>
+          <p>Home</p>
+          <p>About</p>
+        </div>
+        <div>
+          <h4>Kontak</h4>
+          <p>08123456789</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================= FLOATING WA ================= -->
+    <a href="https://wa.me/628123456789" class="wa"
+      ><i class="fa-brands fa-whatsapp"></i
+    ></a>
+
+    <!-- ================= SCRIPT ================= -->
+    <script>
+      // DARK MODE AUTO
+      const hour = new Date().getHours();
+      document.body.classList.add(hour >= 18 || hour < 6 ? 'dark' : 'light');
+
+      // TOGGLE MENU MOBILE
+      function toggleMenu() {
+        document.getElementById('menu').classList.toggle('active');
+      }
+
+      // SLIDER AUTO
+      let index = 0;
+      setInterval(() => {
+        index = (index + 1) % 3;
+        document.getElementById('slides').style.transform =
+          `translateX(-${index * 100}%)`;
+      }, 3000);
+
+      // FAQ
+      function toggleFAQ(el) {
+        let p = el.nextElementSibling;
+        p.style.display = p.style.display === 'block' ? 'none' : 'block';
+      }
+    </script>
+  </body>
+</html>
