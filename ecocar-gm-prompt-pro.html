@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ECORent | Rental Mobil Premium Terbaik</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              brand: '#dc2626', // Red-600
+              brandDark: '#b91c1c', // Red-700
+              dark: '#111827', // Gray-900 (Black Font)
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Glassmorphism for Navbar */
+      .glass {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+      }
+    </style>
+  </head>
+  <body class="font-sans text-dark bg-white antialiased">
+    <nav
+      class="fixed w-full z-50 glass border-b border-gray-100 shadow-sm transition-all"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex-shrink-0 flex items-center gap-2">
+            <i class="fa-solid fa-car-rear text-brand text-2xl"></i>
+            <a
+              href="https://car.prodigital.biz.id/home"
+              class="font-bold text-2xl tracking-tight text-dark"
+            >
+              ECO<span class="text-brand">Rent</span>
+            </a>
+          </div>
+
+          <div class="hidden md:flex space-x-8 items-center">
+            <a
+              href="https://car.prodigital.biz.id/home"
+              class="text-dark hover:text-brand font-medium transition"
+              >Home</a
+            >
+            <a
+              href="https://car.prodigital.biz.id/about"
+              class="text-dark hover:text-brand font-medium transition"
+              >About</a
+            >
+            <a
+              href="https://car.prodigital.biz.id/service"
+              class="text-dark hover:text-brand font-medium transition"
+              >Service</a
+            >
+            <a
+              href="https://car.prodigital.id/gallery"
+              class="text-dark hover:text-brand font-medium transition"
+              >Gallery</a
+            >
+            <a
+              href="https://car.prodigital.biz.id/blog"
+              class="text-dark hover:text-brand font-medium transition"
+              >Blog</a
+            >
+            <a
+              href="https://car.prodigital.biz.id/contact"
+              class="text-dark hover:text-brand font-medium transition"
+              >Contact</a
+            >
+            <a
+              href="https://api.whatsapp.com/send?phone=6281384072641&text=Halo%20ECORent,%20saya%20ingin%20konsultasi%20sewa%20mobil."
+              target="_blank"
+              class="bg-brand hover:bg-brandDark text-white px-5 py-2.5 rounded-lg font-semibold transition shadow-md hover:shadow-lg"
+            >
+              <i class="fa-brands fa-whatsapp mr-1"></i> Booking
+            </a>
+          </div>
+
+          <div class="md:hidden flex items-center">
+            <button
+              id="mobile-menu-btn"
+              class="text-dark hover:text-brand focus:outline-none"
+            >
+              <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg"
+      >
+        <div class="px-4 pt-2 pb-6 space-y-2">
+          <a
+            href="https://car.prodigital.biz.id/home"
+            class="block px-3 py-2 text-base font-medium text-dark hover:text-brand hover:bg-gray-50 rounded-md"
+            >Home</a
+          >
+          <a
+            href="https://car.prodigital.biz.id/about"
+            class="block px-3 py-2 text-base font-medium text-dark hover:text-brand hover:bg-gray-50 rounded-md"
+            >About</a
+          >
+          <a
+            href="https://car.prodigital.biz.id/service"
+            class="block px-3 py-2 text-base font-medium text-dark hover:text-brand hover:bg-gray-50 rounded-md"
+            >Service</a
+          >
+          <a
+            href="https://car.prodigital.id/gallery"
+            class="block px-3 py-2 text-base font-medium text-dark hover:text-brand hover:bg-gray-50 rounded-md"
+            >Gallery</a
+          >
+          <a
+            href="https://car.prodigital.biz.id/blog"
+            class="block px-3 py-2 text-base font-medium text-dark hover:text-brand hover:bg-gray-50 rounded-md"
+            >Blog</a
+          >
+          <a
+            href="https://car.prodigital.biz.id/contact"
+            class="block px-3 py-2 text-base font-medium text-dark hover:text-brand hover:bg-gray-50 rounded-md"
+            >Contact</a
+          >
+          <a
+            href="https://api.whatsapp.com/send?phone=6281384072641&text=Halo%20ECORent,%20saya%20ingin%20konsultasi%20sewa%20mobil."
+            target="_blank"
+            class="block mt-4 w-full text-center bg-brand text-white px-5 py-3 rounded-lg font-semibold shadow-md"
+          >
+            <i class="fa-brands fa-whatsapp mr-1"></i> Hubungi Kami
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section
+      class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 flex items-center min-h-[90vh]"
+    >
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1503376760367-15ea2fb6bb11?q=80&w=2070&auto=format&fit=crop"
+          alt="Premium Car Background"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"
+        ></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="max-w-2xl">
+          <span
+            class="inline-block py-1 px-3 rounded-full bg-red-100 text-brand font-semibold text-sm mb-4 border border-red-200"
+          >
+            🏆 Pilihan #1 Rental Mobil Premium
+          </span>
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-dark leading-tight mb-6"
+          >
+            Berkendara Penuh
+            <span class="text-brand">Gaya & Kenyamanan</span> Tanpa Kompromi
+          </h1>
+          <p
+            class="text-lg md:text-xl text-gray-700 mb-8 font-medium leading-relaxed"
+          >
+            Sewa mobil premium harian atau bulanan dengan unit terawat, bersih,
+            dan layanan profesional. Pilihan lepas kunci atau dengan driver VIP.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="https://api.whatsapp.com/send?phone=6281384072641&text=Halo%20ECORent,%20saya%20ingin%20booking%20mobil%20sekarang."
+              target="_blank"
+              class="bg-brand hover:bg-brandDark text-white text-center px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg hover:shadow-xl hover:-translate-y-1"
+            >
+              <i class="fa-brands fa-whatsapp mr-2 text-xl"></i> Booking via
+              WhatsApp
+            </a>
+            <a
+              href="#armada"
+              class="bg-white hover:bg-gray-50 text-dark border-2 border-gray-200 text-center px-8 py-4 rounded-xl font-bold text-lg transition hover:-translate-y-1"
+            >
+              Lihat Armada Kami
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-dark text-white py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center divide-y md:divide-y-0 md:divide-x divide-gray-700"
+        >
+          <div class="p-4">
+            <div class="text-yellow-400 text-2xl mb-2">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p class="text-2xl font-bold">4.9/5 Rating</p>
+            <p class="text-gray-400 text-sm">Dari 2.500+ Ulasan Google</p>
+          </div>
+          <div class="p-4">
+            <p class="text-4xl font-extrabold text-brand mb-1">10,000+</p>
+            <p class="text-lg font-semibold">Pelanggan Puas</p>
+            <p class="text-gray-400 text-sm">Dipercaya perusahaan & individu</p>
+          </div>
+          <div class="p-4 text-left md:pl-10">
+            <i class="fa-solid fa-quote-left text-brand text-2xl mb-2"></i>
+            <p class="text-gray-300 italic text-sm mb-2">
+              "Luar biasa! Unit mobil sangat bersih dan wangi. Drivernya juga
+              on-time dan profesional. Sangat direkomendasikan!"
+            </p>
+            <p class="font-bold text-sm">- Budi S., Executive Manager</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-gray-50" id="layanan">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-brand font-bold tracking-wide uppercase text-sm mb-2">
+            Layanan Utama
+          </h2>
+          <h3 class="text-3xl md:text-4xl font-extrabold text-dark">
+            Solusi Mobilitas Fleksibel Untuk Anda
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+          >
+            <div
+              class="w-14 h-14 bg-red-50 text-brand rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand group-hover:text-white transition"
+            >
+              <i class="fa-regular fa-calendar-check"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-3 text-dark">Sewa Harian</h4>
+            <p class="text-gray-600 mb-6">
+              Fleksibilitas tinggi untuk mobilitas harian Anda. Cocok untuk
+              liburan keluarga, perjalanan bisnis singkat, atau wedding.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+          >
+            <div
+              class="w-14 h-14 bg-red-50 text-brand rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand group-hover:text-white transition"
+            >
+              <i class="fa-solid fa-calendar-days"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-3 text-dark">Sewa Bulanan</h4>
+            <p class="text-gray-600 mb-6">
+              Solusi cerdas dan hemat untuk operasional bisnis, ekspatriat, atau
+              kebutuhan kendaraan jangka panjang tanpa pusing perawatan.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+          >
+            <div
+              class="w-14 h-14 bg-red-50 text-brand rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand group-hover:text-white transition"
+            >
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-3 text-dark">
+              Dengan Driver / Lepas Kunci
+            </h4>
+            <p class="text-gray-600 mb-6">
+              Pilih kebebasan berkendara sendiri (lepas kunci) atau nikmati
+              kenyamanan maksimal dengan supir VIP kami yang berpengalaman.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+          <div class="w-full lg:w-1/2">
+            <img
+              src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop"
+              alt="Luxury Interior"
+              class="rounded-2xl shadow-2xl w-full object-cover h-[500px]"
+            />
+          </div>
+
+          <div class="w-full lg:w-1/2">
+            <h2
+              class="text-brand font-bold tracking-wide uppercase text-sm mb-2"
+            >
+              Mengapa Memilih ECORent
+            </h2>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-dark mb-6">
+              Standar Pelayanan Bintang Lima
+            </h3>
+            <p class="text-gray-600 mb-10 text-lg">
+              Kami memahami bahwa waktu dan kenyamanan Anda sangat berharga.
+              Oleh karena itu, kami berkomitmen memberikan pengalaman rental
+              mobil tanpa cacat dari awal hingga akhir.
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div
+                  class="flex-shrink-0 w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-brand mt-1"
+                >
+                  <i class="fa-solid fa-bolt text-xl"></i>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-xl font-bold text-dark">
+                    Proses Cepat & Anti Ribet
+                  </h4>
+                  <p class="text-gray-600 mt-1">
+                    Booking mudah hanya via WhatsApp, syarat tidak memberatkan,
+                    dan unit siap diantar ke lokasi Anda.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="flex-shrink-0 w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-brand mt-1"
+                >
+                  <i class="fa-solid fa-sparkles text-xl"></i>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-xl font-bold text-dark">
+                    Unit Selalu Bersih & Prima
+                  </h4>
+                  <p class="text-gray-600 mt-1">
+                    Setiap mobil melewati inspeksi ketat, dicuci luar dalam, dan
+                    disanitasi sebelum diserahkan kepada Anda.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="flex-shrink-0 w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-brand mt-1"
+                >
+                  <i class="fa-solid fa-money-bill-wave text-xl"></i>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-xl font-bold text-dark">Harga Transparan</h4>
+                  <p class="text-gray-600 mt-1">
+                    Tidak ada biaya tersembunyi. Harga yang Anda lihat adalah
+                    harga yang Anda bayar.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="armada" class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-end mb-12">
+          <div class="max-w-2xl">
+            <h2
+              class="text-brand font-bold tracking-wide uppercase text-sm mb-2"
+            >
+              Armada Kami
+            </h2>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-dark">
+              Pilih Kendaraan Premium Anda
+            </h3>
+          </div>
+          <a
+            href="https://car.prodigital.id/gallery"
+            class="hidden md:inline-flex items-center text-brand font-semibold hover:text-brandDark transition"
+          >
+            Lihat Semua Armada <i class="fa-solid fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-xl transition-all duration-300 group"
+          >
+            <div class="relative overflow-hidden h-60">
+              <img
+                src="https://images.unsplash.com/photo-1629897048514-3dd74142fbce?q=80&w=2070&auto=format&fit=crop"
+                alt="Toyota Alphard"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+              />
+              <div
+                class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-dark shadow"
+              >
+                VIP MPV
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-2xl font-bold text-dark mb-2">Toyota Alphard</h4>
+              <p class="text-gray-500 text-sm mb-4 border-b pb-4">
+                Tersedia Lepas Kunci / Dengan Supir
+              </p>
+              <div class="flex justify-between items-center mb-6">
+                <div>
+                  <span class="text-xs text-gray-500 block">Mulai dari</span>
+                  <span class="text-xl font-extrabold text-brand"
+                    >Rp 2.500.000<span
+                      class="text-sm font-normal text-gray-500"
+                    >
+                      /hari</span
+                    ></span
+                  >
+                </div>
+              </div>
+              <a
+                href="https://api.whatsapp.com/send?phone=6281384072641&text=Halo%20ECORent,%20saya%20tertarik%20menyewa%20Toyota%20Alphard."
+                target="_blank"
+                class="block w-full bg-dark hover:bg-black text-white text-center py-3 rounded-xl font-semibold transition"
+              >
+                Pesan Sekarang
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-xl transition-all duration-300 group"
+          >
+            <div class="relative overflow-hidden h-60">
+              <img
+                src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop"
+                alt="Mercedes-Benz S-Class"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+              />
+              <div
+                class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-dark shadow"
+              >
+                Luxury Sedan
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-2xl font-bold text-dark mb-2">
+                Mercedes S-Class
+              </h4>
+              <p class="text-gray-500 text-sm mb-4 border-b pb-4">
+                Hanya Dengan Supir VIP
+              </p>
+              <div class="flex justify-between items-center mb-6">
+                <div>
+                  <span class="text-xs text-gray-500 block">Mulai dari</span>
+                  <span class="text-xl font-extrabold text-brand"
+                    >Rp 4.500.000<span
+                      class="text-sm font-normal text-gray-500"
+                    >
+                      /hari</span
+                    ></span
+                  >
+                </div>
+              </div>
+              <a
+                href="https://api.whatsapp.com/send?phone=6281384072641&text=Halo%20ECORent,%20saya%20tertarik%20menyewa%20Mercedes%20S-Class."
+                target="_blank"
+                class="block w-full bg-dark hover:bg-black text-white text-center py-3 rounded-xl font-semibold transition"
+              >
+                Pesan Sekarang
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-xl transition-all duration-300 group"
+          >
+            <div class="relative overflow-hidden h-60">
+              <img
+                src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=2070&auto=format&fit=crop"
+                alt="BMW Seri 5"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+              />
+              <div
+                class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-dark shadow"
+              >
+                Premium Sedan
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-2xl font-bold text-dark mb-2">BMW Seri 5</h4>
+              <p class="text-gray-500 text-sm mb-4 border-b pb-4">
+                Tersedia Lepas Kunci / Dengan Supir
+              </p>
+              <div class="flex justify-between items-center mb-6">
+                <div>
+                  <span class="text-xs text-gray-500 block">Mulai dari</span>
+                  <span class="text-xl font-extrabold text-brand"
+                    >Rp 3.000.000<span
+                      class="text-sm font-normal text-gray-500"
+                    >
+                      /hari</span
+                    ></span
+                  >
+                </div>
+              </div>
+              <a
+                href="https://api.whatsapp.com/send?phone=6281384072641&text=Halo%20ECORent,%20saya%20tertarik%20menyewa%20BMW%20Seri%205."
+                target="_blank"
+                class="block w-full bg-dark hover:bg-black text-white text-center py-3 rounded-xl font-semibold transition"
+              >
+                Pesan Sekarang
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center md:hidden">
+          <a
+            href="https://car.prodigital.id/gallery"
+            class="inline-flex items-center text-brand font-semibold hover:text-brandDark transition"
+          >
+            Lihat Semua Armada <i class="fa-solid fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 relative overflow-hidden bg-brand">
+      <div
+        class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-white opacity-10"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-black opacity-10"
+      ></div>
+
+      <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">
+          Jangan Sampai Kehabisan Unit!
+        </h2>
+        <p class="text-xl text-red-100 mb-10">
+          Jadwal armada kami padat di akhir pekan & musim liburan. Booking
+          sekarang untuk mengamankan kendaraan premium Anda hari ini.
+        </p>
+        <a
+          href="https://api.whatsapp.com/send?phone=6281384072641&text=Halo%20ECORent,%20saya%20ingin%20booking%20mobil%20sekarang%20sebelum%20kehabisan."
+          target="_blank"
+          class="inline-flex items-center bg-white text-brand hover:bg-gray-100 px-10 py-5 rounded-full font-extrabold text-lg transition shadow-2xl hover:scale-105"
+        >
+          <i class="fa-brands fa-whatsapp text-2xl mr-3"></i> Booking Sekarang
+          via WA
+        </a>
+      </div>
+    </section>
+
+    <footer class="bg-dark pt-16 pb-8 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
+        >
+          <div>
+            <div class="flex items-center gap-2 mb-6">
+              <i class="fa-solid fa-car-rear text-brand text-3xl"></i>
+              <span class="font-bold text-3xl tracking-tight text-white"
+                >ECO<span class="text-brand">Rent</span></span
+              >
+            </div>
+            <p class="text-gray-400 mb-6 leading-relaxed">
+              Mitra transportasi terpercaya Anda. Menyediakan layanan sewa mobil
+              premium dengan kualitas pelayanan VIP untuk segala kebutuhan
+              perjalanan Anda.
+            </p>
+          </div>
+
+          <div>
+            <h4
+              class="text-lg font-bold mb-6 border-b border-gray-700 pb-2 inline-block"
+            >
+              Navigasi
+            </h4>
+            <ul class="space-y-3 text-gray-400">
+              <li>
+                <a
+                  href="https://car.prodigital.biz.id/home"
+                  class="hover:text-brand transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://car.prodigital.biz.id/about"
+                  class="hover:text-brand transition"
+                  >Tentang Kami</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://car.prodigital.biz.id/service"
+                  class="hover:text-brand transition"
+                  >Layanan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://car.prodigital.id/gallery"
+                  class="hover:text-brand transition"
+                  >Galeri Armada</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://car.prodigital.biz.id/blog"
+                  class="hover:text-brand transition"
+                  >Blog & Artikel</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="text-lg font-bold mb-6 border-b border-gray-700 pb-2 inline-block"
+            >
+              Kontak Kami
+            </h4>
+            <ul class="space-y-4 text-gray-400">
+              <li class="flex items-start">
+                <i class="fa-brands fa-whatsapp mt-1 text-brand w-6"></i>
+                <a
+                  href="https://api.whatsapp.com/send?phone=6281384072641&text=Halo%20ECORent"
+                  target="_blank"
+                  class="hover:text-white transition"
+                  >+62 813-8407-2641</a
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fa-regular fa-envelope mt-1 text-brand w-6"></i>
+                <a
+                  href="mailto:info@prodigital.biz.id"
+                  class="hover:text-white transition"
+                  >info@prodigital.biz.id</a
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fa-solid fa-location-dot mt-1 text-brand w-6"></i>
+                <span>Jakarta, Indonesia</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="text-lg font-bold mb-6 border-b border-gray-700 pb-2 inline-block"
+            >
+              Ikuti Kami
+            </h4>
+            <p class="text-gray-400 mb-4">
+              Dapatkan info promo dan update armada terbaru kami di sosial
+              media.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-brand transition"
+              >
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-brand transition"
+              >
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-brand transition"
+              >
+                <i class="fa-brands fa-tiktok"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p
+            class="text-gray-500 text-sm text-center md:text-left mb-4 md:mb-0"
+          >
+            &copy; 2026 ECORent - Prodigital. All rights reserved.
+          </p>
+          <div class="space-x-4 text-sm text-gray-500">
+            <a href="#" class="hover:text-white transition">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const icon = btn.querySelector('i');
+
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        if (menu.classList.contains('hidden')) {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        } else {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-xmark');
+        }
+      });
+
+      // Sticky Navbar effect on scroll
+      const navbar = document.querySelector('nav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+          navbar.classList.add('shadow-md');
+          navbar.classList.remove('shadow-sm');
+        } else {
+          navbar.classList.remove('shadow-md');
+          navbar.classList.add('shadow-sm');
+        }
+      });
+    </script>
+  </body>
+</html>
